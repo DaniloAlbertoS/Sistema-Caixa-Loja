@@ -4,7 +4,7 @@ Sistema de Gestão de Caixas de Loja. Com cadastro, edições, visualizações e
 ## Status do Projeto
 🚧 Em desenvolvimento 🚧
 
-## Tecnologias Utilizadas
+## Tecnologias Utilizadas 🛠️
 - Java
 - MySql
 - Spring Boot
@@ -12,13 +12,13 @@ Sistema de Gestão de Caixas de Loja. Com cadastro, edições, visualizações e
 - BootStrap (Interface Responsiva)
 - Git/GitHub (Controle de Versão)
 
-## Time de Desenvolvedores
-### Danilo ALberto dos Santos
+## Time de Desenvolvedores 👥
+### Danilo ALberto dos Santos 
 
-## Objetivo do Software
+## Objetivo do Software 💻
 O Sistema Caixa de Loja tem como objetivo facilitar a gestão de uma loja, permitindo o cadastro e edições de funcionários e lojas, envios de relatórios de controle financeiros.Tudo de forma segura, utilizando autenticações de ussuário.
 
-## Funcionalidades do Sistema
+## Funcionalidades do Sistema ✅
 - **Login e Autenticação**: Composta de diferentes niveis de acesso (Financeiro / Gerência).
 - **Cadastro e Edição de Colaboradores**: Permite cadastrar, excluir e editar colaboradores do sistema.
 - **Cadastro e Edição de Lojas**: Permite cadastrar, excluir e editar lojas do sistema.
