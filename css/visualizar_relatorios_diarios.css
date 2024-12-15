@@ -1,0 +1,335 @@
+  /* Reset */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #afafaf;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Container Principal */
+.container {
+    width: 90%;
+    height: 90%;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: row;
+}
+
+/* Cabeçalho */
+.header {
+    background-color: #1832EF;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    border-radius: 8px 8px 0 0;
+}
+
+.header h1 {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+ /* Info Linha */
+ .info-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0;
+    font-size: 16px;
+    color: #333;
+}
+
+.info-line .left {
+    font-weight: bold;
+}
+
+.info-line .right {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.icon-info {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.icon-info img {
+    width: 20px;
+    height: 20px;
+}
+
+/* Filtro */
+.filter-section {
+    margin-bottom: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.filter-section label {
+    font-weight: bold;
+}
+
+.filter-section input {
+    padding: 8px;
+    width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.filter-section button {
+    background-color: #1832EF;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.filter-section button:hover {
+    background-color: #111E77;
+}
+
+.filter-section button img {
+    width: 16px;
+    height: 16px;
+}
+
+/* Conteúdo Principal */
+.content {
+    flex: 3;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.content h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+
+.report-table {
+    max-height: 400px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: white;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table th, table td {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: left;
+}
+
+table th {
+    background-color: #1832EF;
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+}
+
+table th:first-child, table td:first-child {
+    text-align: center;
+}
+
+/* Botões de ação */
+.action-buttons {
+    position: sticky; 
+    bottom: 0; 
+    background-color: #f0f0f0; 
+    padding: 10px;
+    z-index: 2; 
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1); 
+}
+
+.btn-delete, .btn-cancel {
+    padding: 10px 15px;
+    font-size: 14px;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+}
+
+.btn-delete {
+    background-color: #e74c3c; /* Vermelho para excluir */
+}
+
+.btn-cancel {
+    background-color: #3498db; /* Azul para cancelar */
+}
+
+.btn-delete:hover {
+    background-color: #c0392b; /* Vermelho mais escuro no hover */
+}
+
+.btn-cancel:hover {
+    background-color: #2980b9; /* Azul mais escuro no hover */
+}
+
+.menu-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: #1832EF;
+    color: white;
+    border-radius: 0 8px 8px 0;
+}
+
+.menu-container img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 10px;
+}
+
+.menu-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.menu-item:hover {
+    transform: scale(1.1);
+}
+
+/* Informações do usuário */
+.user-info {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #1832EF;
+    border-radius: 10px 8px 8px 10px;
+    color: white;
+    text-align: center;
+    margin: 10px;
+    margin-bottom: 20px;
+}
+
+.user-image img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid white;
+    
+}
+
+.user-image {
+    position: relative; /* Necessário para o posicionamento absoluto do tooltip */
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.user-image:hover::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    top: -30px; /* Ajuste para exibir o tooltip acima */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: red;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 20px;
+    white-space: nowrap;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+}
+
+.mini-menu {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.mini-item {
+    width: 70px;
+    height: 70px;
+    background-color: #111E77;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.mini-item:hover::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: -30px; /* Ajuste conforme necessário */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #111E77;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    white-space: nowrap;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+}
+
+.mini-item img {
+    width: 50px;
+    height: 50px;
+}
+
+.mini-item.disabled {
+    background-color: #666;
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+.mini-item:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+}
+
+.btn-sair {
+    background-color: #FF4949;
+    border: none;
+    color: white;
+    font-size: 16px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    align-self: flex-end;
+    
+}
+
+.btn-sair:hover {
+    background-color: #D63333;
+}
+

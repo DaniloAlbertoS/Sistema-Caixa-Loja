@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/cadastrar_relatorios.css">
+    <!-- Link para Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="js/atualizacao_de_hora.js"></script>
+    <title>Visualizar Relatórios</title>
+</head>
+<body>
+    <div class="container">
+        <!-- Conteúdo Principal -->
+        <div class="content">
+            <div class="header">
+                <h1>Cadastrar Relatórios</h1>
+            </div>
+    
+            <!-- Info Linha -->
+            <div class="info-line">
+                <div class="left">ID da Loja: <span id="store-id">12345</span></div>
+                <div class="right">
+                    <div class="icon-info">
+                        <!-- Ícone de Calendário do Font Awesome -->
+                        <i class="fas fa-calendar-alt"></i>
+                        <span id="current-date"></span>
+                    </div>
+                    <div class="icon-info">
+                        <!-- Ícone de Relógio do Font Awesome -->
+                        <i class="fas fa-clock"></i>
+                        <span id="current-time"></span>
+                    </div>
+                </div>
+            </div>
+            <!-- Formulário -->
+            <div class="form-section">
+                <label for="valor-caixa">1. Valor de fundo dos caixas em loja*</label>
+                <input type="text" id="valor-caixa" class="form-control" placeholder="Digite o valor...">
+
+                <label for="valor-cofre">2. Valor presente no cofre em loja (cédulas e moedas)*</label>
+                <input type="text" id="valor-cofre" class="form-control" placeholder="Digite o valor...">
+
+                <label for="valor-despesas">3. Valor disponível das despesas de loja (saldo físico)*</label>
+                <input type="text" id="valor-despesas" class="form-control" placeholder="Digite o valor...">
+
+                <div class="form-buttons">
+                    <button class="btn btn-primary">Salvar</button>
+                    <button class="btn btn-secondary">Limpar</button>
+                </div>
+            </div>
+        </div>
+        <!-- Área da direita -->
+        <div class="user-info">
+            <h2>Bem-vindo</h2>
+            <p><strong>Usuário:</strong> </p>
+            <p><strong>Mat:</strong> </p>
+            <div class="user-image" data-tooltip="Tela Inicial">
+                <a href="menu-gerencia.html"><img src="imagens/logo-de-usuarios.png" alt="Usuário" class="img-fluid"></a>
+            </div>
+            <div class="mini-menu">
+                <div class="mini-item" data-tooltip="Visualizar Relatórios">
+                    <a href="tela_visualizar_relatorio.html"><img src="imagens/visualizar_relatorios.png" alt="Visualizar Relatórios" class="img-fluid"></a>
+                </div>
+                <div class="mini-item" data-tooltip="Visualizar Relatórios Diários">
+                    <a href="tela_visualizar_relatorios_diarios.html"><img src="imagens/visualizar_relatorios_diarios.png" alt="Visualizar Envios Diários" class="img-fluid"></a>
+                </div>
+                <div class="mini-item disabled" data-tooltip="Cadastrar Relatórios">
+                    <a href="cadastrar_relatorios.html"><img src="imagens/cadastrar_relatorios.png" alt="Cadastrar Relatórios" class="img-fluid"></a>
+                </div>
+            </div>
+            <a href="index.html" class="sair"><button id="logout" class="btn btn-danger"><strong></strong> Sair</button></a>
+        </div>
+    </div>
+    
+    <!-- Scripts do Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
+    <script src="js/cadastro_relatorios.js"></script>
+    <script src="js/atualizacao_de_hora.js"></script>
+</body>
+</html>

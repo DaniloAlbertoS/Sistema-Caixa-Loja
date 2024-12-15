@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/editar_lojas.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Editar Loja</title>
+</head>
+<body>
+    <div class="container">
+        <!-- Cabeçalho -->
+        <div class="header">
+            <h1>Editar Loja</h1>
+        </div>
+        <div class="content">
+            <!-- Área da esquerda: Formulário de edição de loja -->
+            <div class="form-container">
+                <!-- Campo de ID da loja e pesquisa -->
+                <div class="search-bar">
+                    <input type="text" id="pesquisar_id" placeholder="Digite o ID da loja">
+                    <button id="btn-pesquisar">
+                        <i class="fas fa-search"></i> Pesquisar
+                    </button>
+                </div>
+
+                <!-- Formulário de dados da loja -->
+                <div class="form">
+                    <div class="form-field">
+                        <label for="id_loja">ID da Loja</label>
+                        <input type="text" id="id_loja" placeholder="ID da loja" disabled>
+                    </div>
+                    <div class="form-field">
+                        <label for="numero_loja">Número da Loja</label>
+                        <input type="text" id="numero_loja" placeholder="Número da loja" disabled>
+                    </div>
+                    <div class="form-field">
+                        <label for="nome_loja">Nome da Loja</label>
+                        <input type="text" id="nome_loja" placeholder="Nome da loja">
+                    </div>
+                    <div class="form-field">
+                        <label for="endereco">Endereço</label>
+                        <input type="text" id="endereco" placeholder="Endereço da loja">
+                    </div>
+                    <div class="form-field">
+                        <label for="cidade">Cidade</label>
+                        <input type="text" id="cidade" placeholder="Cidade da loja">
+                    </div>
+                    <div class="form-field">
+                        <label for="telefone">Telefone</label>
+                        <input type="text" id="telefone" placeholder="Telefone da loja">
+                    </div>
+                    <div class="form-field">
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" placeholder="E-mail da loja">
+                    </div>
+                    <div class="form-field">
+                        <label for="funcionamento">Horário de Funcionamento</label>
+                        <input type="text" id="funcionamento" placeholder="Horário de funcionamento da loja">
+                    </div>
+                    <div class="form-field">
+                        <label for="cnpj">CNPJ</label>
+                        <input type="text" id="cnpj" placeholder="CNPJ da loja">
+                    </div>
+                </div>
+
+                <!-- Botões de ação -->
+                <div class="form-buttons">
+                    <button id="btn-salvar" class="btn-salvar">Salvar</button>
+                    <button id="btn-limpar" class="btn-limpar"> Limpar</button>
+                    <button id="btn-cancelar" class="btn-cancelar"> Cancelar</button>
+                </div>
+
+                <!-- Área para mensagens -->
+                <div id="mensagem" class="mensagem" style="display: none;"></div>
+            </div>
+
+            <!-- Área da direita: Informações do usuário e mini-menu -->
+            <div class="user-info">
+                <h2>Bem-vindo</h2>
+                <p><strong>Usuário:</strong> Admin</p>
+                <p><strong>Mat:</strong> 12345</p>
+                <div class="user-image" data-tooltip="Tela Inicial">
+                    <a href="tela_financeiro.html"><img src="imagens/logo-de-usuarios.png" alt="Usuário"></a>
+                </div>
+                <div class="mini-menu">
+                    <div class="mini-item" data-tooltip="Cadastrar Colaboradores">
+                        <a href="tela_cadastro_colaboradores.html"><img src="imagens/lgo-cadastrar-colaboradores.png" alt="Colaboradores"></a>
+                    </div>
+                    <div class="mini-item" data-tooltip="Cadastrar Loja">
+                        <a href="cadastro_lojas.html"><img src="imagens/cadastrar-loja.png" alt="Cadastrar Loja"></a>
+                    </div>
+                    <div class="mini-item" data-tooltip="Listar Colaboradores">
+                        <a href="listar_colaboradores.html"><img src="imagens/listar-colaboradores.png" alt="Listar Colaboradores"></a>
+                    </div>
+                    <div class="mini-item" data-tooltip="Listar Lojas">
+                        <a href="listar_lojas.html"><img src="imagens/listar-lojas.png" alt="Listar Lojas"></a>
+                    </div>
+                    <div class="mini-item" data-tooltip="Editar Colaboradores">
+                        <a href="editar_colaboradores.html"><img src="imagens/editar-colaboradores.png" alt="Editar Colaboradores"></a>
+                    </div>
+                    <div class="mini-item disabled" data-tooltip="Editar Lojas">
+                        <a href="editar_lojas.html"><img src="imagens/editar-lojas.png" alt="Editar Lojas"></a>
+                    </div>
+                </div>
+
+                <a href="index.html" class="sair"><button id="logout" class="btn-sair"><strong></strong> Sair</button></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Adicionando o JavaScript -->
+    <script src="js/editar_lojas.js"></script>
+</body>
+</html>

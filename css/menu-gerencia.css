@@ -1,0 +1,166 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #afafaf;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Container Principal */
+.container {
+    width: 90%;
+    height: 90%;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Cabeçalho */
+.header {
+    background-color: #1832EF;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    border-radius: 8px 8px 0 0;
+}
+
+.header h1 {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Conteúdo Principal */
+.content {
+    display: flex;
+    flex: 1;
+}
+
+/* Menu à esquerda */
+.menu-container {
+    flex: 2;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px; /* Ajusta o espaçamento entre os itens */
+    padding: 20px;
+    background-color: white;
+    justify-items: center; /* Centraliza os itens horizontalmente */
+    align-items: center; /* Centraliza os itens verticalmente */
+}
+
+.menu-item {
+    background: #111E77;
+    color: white;
+    text-align: center;
+    border-radius: 8px;
+    padding: 15px; /* Reduz o padding */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s;
+    height: 120px; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu-item img {
+    width: 60px; /* Reduz o tamanho da imagem */
+    height: 60px; /* Reduz o tamanho da imagem */
+    margin-bottom: 10px;
+    border-radius: 50%;
+}
+
+.menu-item p {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.menu-item:hover {
+    transform: scale(1.05); 
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+    background-color: #0F285F;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+
+/* Informações do usuário */
+.user-info {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #1832EF;
+    border-radius: 10px 8px 8px 10px;
+    color: white;
+    text-align: center;
+    margin: 10px;
+}
+
+.user-info h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.user-info p {
+    font-size: 16px;
+}
+
+.user-image img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin: 20px 0;
+    border: 2px solid white;
+}
+
+.user-image {
+    position: relative; /* Necessário para o posicionamento absoluto do tooltip */
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.user-image:hover::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    top: -30px; /* Ajuste para exibir o tooltip acima */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: red;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 20px;
+    white-space: nowrap;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+}
+
+/* Botão de Sair */
+.btn-sair {
+    background-color: #FF4949;
+    border: none;
+    color: white;
+    font-size: 16px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    align-self: flex-end;
+}
+
+.btn-sair:hover {
+    background-color: #D63333;
+}

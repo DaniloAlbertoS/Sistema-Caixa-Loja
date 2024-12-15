@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saiba Mais</title>
+    <link rel="stylesheet" href="css/saiba+.css">
+</head>
+<body>
+    <div class="info-container">
+        <!-- Conteúdo informativo -->
+        <img src="imagens/logo-tipo.png" alt="Logo da Empresa" class="logo">
+        <h2>Informações sobre Cadastro</h2>
+        <p>
+            Para realizar um novo cadastro, entre em contato com o RH responsável.
+        </p>
+        <p>
+            Telefone: (11) 1234-5678
+        </p>
+
+        <!-- Botão de voltar -->
+        <button id="voltar" class="btn-voltar">Voltar</button>
+    </div>
+
+    <script>
+        // Função para voltar à página de login
+        document.getElementById('voltar').addEventListener('click', function() {
+            window.location.href = 'index.html'; // Volta para a página de login
+        });
+    </script>
+</body>
+</html>

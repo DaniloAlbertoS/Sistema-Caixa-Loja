@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/cadastro_colaboradores_financeiro.css">
+    <title>Cadastro Colaboradores Gerencia</title>
+</head>
+<body>
+    <div class="container">
+        <!-- Cabeçalho -->
+        <div class="header">
+            <h1>Cadastro Colaboradores Gerencia</h1>
+        </div>
+
+        <div class="content">
+            <!-- Formulário -->
+            <div class="form-container">
+                <form id="formCadastro">
+                    <label for="nome">*Nome:</label>
+                    <input type="text" id="nome" name="nome" class="form-control" required>
+                
+                    <label for="cargo">*Cargo:</label>
+                    <input type="text" id="cargo" name="cargo" class="form-control" required>
+                
+                    <label for="cpf">*CPF:</label>
+                    <input type="text" id="cpf" name="cpf" class="form-control" required>
+                
+                    <label for="matricula">*Matrícula:</label>
+                    <input type="text" id="matricula" name="matricula" class="form-control" required>
+                
+                    <label for="situacao">*Situação:</label>
+                    <select id="situacao" name="situacao" class="form-control">
+                        <option value="ativo">Ativo</option>
+                        <option value="inativo">Inativo</option>
+                    </select>
+                
+                    <div class="form-buttons">
+                        <button type="submit" class="btn btn-primary"><strong></strong> Salvar</button>
+                        <button type="reset" class="btn btn-secondary"><strong></strong> Limpar</button>
+                    </div>
+                </form>
+                
+                <div id="mensagem" style="display:none;"></div>
+            </div>
+
+            <!-- Informações do usuário -->
+            <div class="user-info">
+                <h2>Bem-vindo</h2>
+                <p><strong>Usuário:</strong> </p>
+                <p><strong>Mat:</strong> </p>
+                <div class="user-image" data-tooltip="Tela Inicial">
+                    <a href="tela_financeiro.html"><img src="imagens/logo-de-usuarios.png" alt="Usuário" class="img-fluid"></a>
+                </div>
+                <div class="mini-menu">
+                    <div class="mini-item" data-tooltip="Cadastrar Colaboradores">
+                       <a href="tela_cadastro_colaboradores.html" class="colaboradores"><img src="imagens/lgo-cadastrar-colaboradores.png" alt="Colaboradores" class="img-fluid"></a>
+                    </div>
+                    <div class="mini-item" data-tooltip="Cadastrar Loja">
+                        <a href="cadastro_lojas.html"> <img src="imagens/cadastrar-loja.png" alt="Cadastrar Loja" class="img-fluid"></a>
+                     </div>
+                     <div class="mini-item" data-tooltip="Listar Colaboradores">
+                         <a href="listar_colaboradores.html"><img src="imagens/listar-colaboradores.png" alt="Listar Colaboradores" class="img-fluid"></a>
+                     </div>
+                     <div class="mini-item" data-tooltip="Listar Lojas">
+                        <a href="listar_lojas.html"><img src="imagens/listar-lojas.png" alt="Listar Lojas" class="img-fluid"></a>
+                     </div>
+                     <div class="mini-item" data-tooltip="Editar Colaboradores">
+                         <a href="editar_colaboradores.html"><img src="imagens/editar-colaboradores.png" alt="Editar Colaboradores" class="img-fluid"></a>
+                     </div>
+                     <div class="mini-item" data-tooltip="Editar Lojas">
+                         <a href="editar_lojas.html"><img src="imagens/editar-lojas.png" alt="Editar Lojas" class="img-fluid"></a>
+                     </div>
+                </div>
+                <a href="index.html" class="sair"><button id="logout" class="btn btn-danger"><strong></strong> Sair</button></a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Scripts do Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script src="js/cadastro_colaboradores.js"></script>
+</body>
+</html>

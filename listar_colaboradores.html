@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/listar_colaboradores.css">
+    <title>Listar Colaboradores</title>
+</head>
+<body>
+    <div class="main-container">
+        <!-- Conteúdo Principal -->
+        <div class="content">
+            <div class="header">
+                <h1>Listar Colaboradores</h1>
+            </div>
+            <div class="search-filter">
+                <label for="table-select">Selecione a Tabela:</label>
+                <select id="table-select">
+                    <option value="financeiro">Financeiro</option>
+                    <option value="Gerencia">Gerencia</option>
+                </select>
+                <label for="search-input">Selecione por Nome, Cargo, Ativo:</label>
+                <input type="text" id="search-input" placeholder="Digite o filtro" aria-label="Pesquisar na tabela">
+
+
+            </div>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th><input type="checkbox" id="select-all"></th>
+                            <th>ID</th>
+                            <th>Nome</th>
+                            <th>Email</th>
+                            <th>Telefone</th>
+                        </tr>
+                    </thead>
+                    <tbody id="collaborator-list">
+                        <!-- A lista de colaboradores será preenchida via JS -->
+                    </tbody>
+                </table>
+            </div>
+            <!-- Botões de ação fora da tabela -->
+            <div class="action-buttons">
+                <button class="btn-delete">Excluir Selecionados</button>
+                <button class="btn-cancel">Cancelar</button>
+            </div>
+        </div>
+
+        <!-- Informações do usuário -->
+        <div class="user-info">
+            <h2>Bem-vindo</h2>
+            <p><strong>Usuário:</strong> </p>
+            <p><strong>Mat:</strong> </p>
+            <div class="user-image" data-tooltip="Tela Inicial">
+                <a href="tela_financeiro.html"><img src="imagens/logo-de-usuarios.png" alt="Usuário"></a>
+            </div>
+            <div class="mini-menu">
+                <div class="mini-item " data-tooltip="Cadastrar Colaboradores">
+                   <a href="tela_cadastro_colaboradores.html" class="colaboradores"><img src="imagens/lgo-cadastrar-colaboradores.png" alt="Colaboradores"></a>
+                </div>
+                <div class="mini-item" data-tooltip="Cadastrar Loja">
+                    <a href="cadastro_lojas.html"> <img src="imagens/cadastrar-loja.png" alt="Cadastrar Loja"></a>
+                 </div>
+                 <div class="mini-item disabled" data-tooltip="Listar Colaboradores">
+                     <a href="listar_colaboradores.html"><img src="imagens/listar-colaboradores.png" alt="Listar Colaboradores"></a>
+                 </div>
+                 <div class="mini-item" data-tooltip="Listar Lojas">
+                    <a href="listar_lojas.html"><img src="imagens/listar-lojas.png" alt="Listar Lojas"></a>
+                 </div>
+                 <div class="mini-item" data-tooltip="Editar Colaboradores">
+                     <a href="editar_colaboradores.html"><img src="imagens/editar-colaboradores.png" alt="Editar Colaboradores"></a>
+                 </div>
+                 <div class="mini-item" data-tooltip="Editar Lojas">
+                     <a href="editar_lojas.html"><img src="imagens/editar-lojas.png" alt="Editar Lojas"></a>
+                 </div>
+            </div>
+            <a href="index.html" class="sair"><button id="logout" class="btn-sair"><strong></strong> Sair</button></a>
+        </div>
+    </div>
+
+    <script src="js/scriptmenu_listar_colaboradores.js"></script>
+    <script src="js/listar_colaboradores.js"></script> <!-- Seu JS para manipular a lista -->
+</body>
+</html>
