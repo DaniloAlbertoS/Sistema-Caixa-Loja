@@ -1,0 +1,100 @@
+/* Reset básico */
+body, h2, input, button {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilo geral */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1832EF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Container de login */
+.login-container {
+    background: white;
+    padding: 20px 30px;
+    border-radius: 5px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 300px;
+    position: relative;
+}
+
+/* Logo */
+.logo {
+    display: block;
+    margin: 0 auto 15px auto;
+    max-width: 80px;
+    border-radius: 50%;
+}
+
+/* Título */
+.login-container h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Grupo de entrada com ícones */
+.input-group {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    padding: 10px;
+}
+
+.input-group i {
+    margin-right: 10px;
+    color: #555;
+}
+
+.input-group input {
+    border: none;
+    outline: none;
+    flex: 1;
+}
+
+/* Botão de login */
+.btn-login {
+    width: 100%;
+    padding: 10px;
+    background-color: #4B49F2;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+}
+
+.btn-login:hover {
+    background-color: #3634ac;
+}
+
+/* Botão Saiba Mais */
+.btn-saiba-mais {
+    margin-top: 30px;
+    padding: 15px;
+    background-color: #17a2b8;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+    width: 50%;
+    text-align: center;
+    float: right;
+}
+
+.btn-saiba-mais:hover {
+    background-color: #117a8b;
+}

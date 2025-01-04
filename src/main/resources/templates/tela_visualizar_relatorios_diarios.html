@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/visualizar_relatorios_diarios.css">
+    <script src="js/atualizacao_de_hora.js"></script>
+    <!-- Adicionando o Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>Visualizar Relatórios Diários</title>
+</head>
+<body>
+    <div class="container">
+        <!-- Conteúdo Principal -->
+        <div class="content">
+            <div class="header">
+                <h1>Visualizar Relatórios Diários</h1>
+            </div>
+    
+            <!-- Info Linha -->
+            <div class="info-line">
+                <div class="left">ID da Loja: <span id="store-id">12345</span></div>
+                <div class="right">
+                    <div class="icon-info">
+                        <!-- Usando o ícone de calendário do Font Awesome -->
+                        <i class="fas fa-calendar-alt"></i>
+                        <span id="current-date">14/12/2024</span>
+                    </div>
+                    <div class="icon-info">
+                        <!-- Usando o ícone de relógio do Font Awesome -->
+                        <i class="fas fa-clock"></i>
+                        <span id="current-time">15:30</span>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Filtro -->
+            <div class="filter-section">
+                <label for="filter">Filtrar por:</label>
+                <input type="text" id="filter" placeholder="Data">
+                <button>
+                    <!-- Usando o ícone de pesquisa do Font Awesome -->
+                    <i class="fas fa-search"></i>
+                    Pesquisar
+                </button>
+            </div>
+    
+            <!-- Tabela -->
+            <table class="report-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Data</th>
+                        <th>Hora</th>
+                        <th>Valor Caixa</th>
+                        <th>Valor Cofre</th>
+                        <th>Despesas</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+            <!-- Botões de ação fora da tabela -->
+            <div class="action-buttons">
+                <button class="btn-delete">Excluir Selecionados</button>
+                <button class="btn-cancel">Cancelar</button>
+            </div>
+        </div>
+        <!-- Área da direita -->
+        <div class="user-info">
+            <h2>Bem-vindo</h2>
+            <p><strong>Usuário:</strong> </p>
+            <p><strong>Mat:</strong> </p>
+            <div class="user-image" data-tooltip="Tela Inicial">
+                <a href="menu-gerencia.html"><img src="imagens/logo-de-usuarios.png" alt="Usuário"></a>
+            </div>
+            <div class="mini-menu">
+                <div class="mini-item "  data-tooltip="Visualizar Relatórios">
+                    <a href="tela_visualizar_relatorio.html"><img src="imagens/visualizar_relatorios.png" alt="Visualizar Relatórios"></a>
+                </div>
+                <div class="mini-item disabled"  data-tooltip="Visualizar Relatórios Diários">
+                    <a href="tela_visualizar_relatorios_diarios.html"><img src="imagens/visualizar_relatorios_diarios.png" alt="Visualizar Envios Diários"></a>
+                </div>
+                <div class="mini-item" data-tooltip="Cadastrar Relatórios">
+                    <a href="cadastro_de_relatorios.html"><img src="imagens/cadastrar_relatorios.png" alt="Cadastrar Relatórios"></a>
+                </div>
+            </div>
+            <a href="index.html" class="sair"><button id="logout" class="btn-sair"><strong></strong> Sair</button></a>
+        </div>
+    </div>
+    <script src="js/visualizar_relatorio_diario.js"></script>
+    <script src="js/atualizacao_de_hora.js"></script>
+</body>
+</html>

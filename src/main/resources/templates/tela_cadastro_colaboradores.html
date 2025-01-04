@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/cadastro_colaboradores.css">
+    <title>Cadastro de Colaboradores</title>
+</head>
+<body>
+    <div class="container">
+        <!-- Cabeçalho -->
+        <div class="header">
+            <h1>Cadastro de Colaboradores</h1>
+        </div>
+
+        <div class="content">
+            <!-- Área da esquerda -->
+            <div class="menu-container">
+                <div class="menu-item">
+                   <a href="cadastro_financeiro.html"><img src="imagens/cadastrar_financeiro.png" alt="Financeiro"></a>
+                    <p>Cadastro Financeiro</p>
+                </div>
+                <div class="menu-item">
+                    <a href="cadastro_gerencia.html"><img src="imagens/cadastrar_gerencia.png" alt="Gerência"></a>
+                    <p>Cadastro Gerência</p>
+                </div>
+            </div>
+
+            <!-- Área da direita -->
+            <div class="user-info">
+                <h2>Bem-vindo</h2>
+                <p><strong>Usuário:</strong> </p>
+                <p><strong>Mat:</strong> </p>
+                <div class="user-image" data-tooltip="Tela Inicial">
+                    <a href="tela_financeiro.html"><img src="imagens/logo-de-usuarios.png" alt="Usuário"></a>
+                </div>
+                <div class="mini-menu">
+                    <div class="mini-item disabled"  data-tooltip="Cadastrar Colaboradores">
+                       <a href="editar_colaboradores.html"> <img src="imagens/lgo-cadastrar-colaboradores.png" alt="Colaboradores"></a>
+                        
+                    </div>
+                    <div class="mini-item"  data-tooltip="Cadastrar Loja">
+                        <a href="cadastro_lojas.html"><img src="imagens/cadastrar-loja.png" alt="Relatórios"></a>
+                    </div>
+                    <div class="mini-item" data-tooltip="Listar Colaboradores">
+                        <a href="listar_colaboradores.html"><img src="imagens/listar-colaboradores.png" alt="Listar Colaboradores"></a>
+                    </div>
+                    <div class="mini-item" data-tooltip="Listar Lojas">
+                        <a href="listar_lojas.html"><img src="imagens/listar-lojas.png" alt="Listar Lojas"></a>
+                    </div>
+                    <div class="mini-item"  data-tooltip="Editar Colaboradores">
+                       <a href="editar_colaboradores.html"> <img src="imagens/editar-colaboradores.png" alt="Documentos"></a>
+                    </div>
+                    <div class="mini-item" data-tooltip="Editar Lojas">
+                        <a href="editar_lojas.html"><img src="imagens/editar-lojas.png" alt="Configurações"></a>
+                    </div>
+                </div>
+                <a href="index.html" class="sair"><button id="logout" class="btn-sair"><strong>[F12]</strong> Sair</button></a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,68 @@
+/* Reset básico */
+body, h2, p, button {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilo geral */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #0220FA;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Altura total da tela */
+    margin: 0;
+}
+
+.logo {
+    display: block;
+    margin: 0 auto 15px auto;
+    max-width: 80px;
+    border-radius: 50%;
+}
+
+/* Contêiner principal */
+.info-container {
+    background: white;
+    padding: 20px 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 300px; 
+    height: 400px; 
+    position: relative; 
+}
+
+/* Título e texto */
+.info-container h2 {
+    margin-bottom: 15px;
+    color: #333;
+    font-size: 30px;
+}
+
+.info-container p {
+    margin-bottom: 10px;
+    color: #555;
+    font-size: 24px;
+}
+
+/* Botão de voltar */
+.btn-voltar {
+    position: absolute; 
+    bottom: 20px; 
+    right: 20px; 
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.btn-voltar:hover {
+    background-color: #0056b3;
+}

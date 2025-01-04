@@ -1,0 +1,203 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #afafaf;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Container Principal */
+.container {
+    width: 90%;
+    height: 90%;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+/* Cabeçalho */
+.header {
+    background-color: #1832EF;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    border-radius: 8px 8px 0 0;
+}
+
+.header h1 {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Conteúdo Principal */
+.content {
+    display: flex;
+    flex: 1;
+}
+
+/* Menu à esquerda */
+.menu-container {
+    flex: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    padding: 20px;
+    background-color: white;
+}
+
+.menu-item {
+    background: #111E77;
+    color: white;
+    text-align: center;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s;
+    width: 250px;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu-item img {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 10px;
+}
+
+.menu-item p {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.menu-item:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+/* Informações do usuário */
+.user-info {
+    flex: 1;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #1832EF;
+    border-radius: 10px 8px 8px 10px;
+    color: white;
+    text-align: center;
+    margin: 10px;
+    
+    
+}
+
+.user-image img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid white;
+    
+}
+
+.user-image {
+    position: relative; /*  posicionamento do tooltip */
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.user-image:hover::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    top: -30px; /* exibir o tooltip acima */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: red;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 20px;
+    white-space: nowrap;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+}
+
+.mini-menu {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.mini-item {
+    width: 80px;
+    height: 80px;
+    background-color: #111E77;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.mini-item:hover::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: -30px; 
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #111E77;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    white-space: nowrap;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+}
+
+.mini-item img {
+    width: 50px;
+    height: 50px;
+}
+
+.mini-item.disabled {
+    background-color: #666;
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+.mini-item:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+}
+
+.btn-sair {
+    background-color: #FF4949;
+    border: none;
+    color: white;
+    font-size: 16px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    align-self: flex-end;
+    
+}
+
+.btn-sair:hover {
+    background-color: #D63333;
+}
