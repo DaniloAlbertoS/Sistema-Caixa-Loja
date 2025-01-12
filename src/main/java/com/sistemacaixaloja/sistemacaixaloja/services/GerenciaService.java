@@ -25,11 +25,20 @@ public class GerenciaService {
         return gerenciaRepository.findById(id).orElse(null);
     }
 
-    public void excluirPorId(int id) {
-        gerenciaRepository.deleteById(id);
+    public boolean excluirPorId(int id) {
+        if (gerenciaRepository.existsById(id)) {
+            gerenciaRepository.deleteById(id);
+            return true;
+        }
+        return false;
     }
+    
 
     public Gerencia buscarPorMatricula(int matricula) {
         return gerenciaRepository.findByMatricula(matricula).orElse(null);
+    }
+
+    public boolean matriculaJaExiste(int matricula) {
+        return gerenciaRepository.existsByMatricula(matricula);
     }
 }

@@ -1,6 +1,5 @@
-
-// Função para salvar os dados do formulário
 document.addEventListener('DOMContentLoaded', () => {
+    // Seletores dos elementos
     const btnSave = document.querySelector('.form-buttons button:first-child'); // Botão "Salvar"
     const btnClear = document.querySelector('.form-buttons button:last-child'); // Botão "Limpar"
 
@@ -9,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('valor-caixa').value = '';
         document.getElementById('valor-cofre').value = '';
         document.getElementById('valor-despesas').value = '';
+        alert('Campos limpos com sucesso!');
     });
 
     // Função para enviar os dados do formulário para o backend
@@ -25,14 +25,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Cria um objeto com os dados do formulário
         const data = {
-            valor_caixa: valorCaixa,
-            valor_cofre: valorCofre,
-            valor_despesas: valorDespesas
+            data: new Date().toISOString().split('T')[0], // Data atual
+            hora: new Date().toISOString(),              // Hora atual
+            valor_caixas: parseFloat(valorCaixa),
+            valor_cofre: parseFloat(valorCofre),
+            valor_despesa: parseFloat(valorDespesas)
         };
 
         try {
-            
-            const response = await fetch('https://sua-api-url.com/salvar-relatorio', {
+            // Envia os dados para o backend
+            const response = await fetch('/api/valores', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -40,7 +42,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 body: JSON.stringify(data)
             });
 
-            
             const result = await response.json();
             if (response.ok) {
                 alert('Relatório cadastrado com sucesso!');
@@ -48,8 +49,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 alert('Erro ao cadastrar relatório: ' + result.message);
             }
         } catch (error) {
+            console.error('Erro na comunicação com o servidor:', error);
             alert('Erro na comunicação com o servidor. Tente novamente.');
         }
     });
 });
-

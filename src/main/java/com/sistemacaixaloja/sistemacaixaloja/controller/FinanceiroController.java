@@ -25,6 +25,14 @@ public class FinanceiroController {
         return ResponseEntity.ok(financeiroService.listarTodos());
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> excluirPorId(@PathVariable int id) {
+        if (financeiroService.excluirPorId(id)) {
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.notFound().build();
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<Financeiro> buscarPorId(@PathVariable int id) {
         Financeiro financeiro = financeiroService.buscarPorId(id);
@@ -32,12 +40,6 @@ public class FinanceiroController {
             return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok(financeiro);
-    }
-
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> excluirPorId(@PathVariable int id) {
-        financeiroService.excluirPorId(id);
-        return ResponseEntity.noContent().build();
     }
 
     @GetMapping("/matricula/{matricula}")

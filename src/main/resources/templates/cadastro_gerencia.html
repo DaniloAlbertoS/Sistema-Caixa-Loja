@@ -48,32 +48,37 @@
             <!-- Informações do usuário -->
             <div class="user-info">
                 <h2>Bem-vindo</h2>
-                <p><strong>Usuário:</strong> </p>
-                <p><strong>Mat:</strong> </p>
+                <p><strong>Usuário:</strong> <span id="user-name">Carregando...</span></p>
+                <p><strong>Mat:</strong> <span id="user-mat">Carregando...</span></p>
+                <div class="date-time">
+                    <p><strong>Data Atual:</strong> <span id="current-date"></span></p>
+                    <p><strong>Hora Atual:</strong> <span id="current-time"></span></p>
+                </div>
                 <div class="user-image" data-tooltip="Tela Inicial">
-                    <a href="tela_financeiro.html"><img src="imagens/logo-de-usuarios.png" alt="Usuário" class="img-fluid"></a>
+                    <a href="/tela-financeiro"><img src="imagens/logo-de-usuarios.png" alt="Usuário" class="img-fluid"></a>
                 </div>
                 <div class="mini-menu">
-                    <div class="mini-item" data-tooltip="Cadastrar Colaboradores">
-                       <a href="tela_cadastro_colaboradores.html" class="colaboradores"><img src="imagens/lgo-cadastrar-colaboradores.png" alt="Colaboradores" class="img-fluid"></a>
+                    <div class="mini-item"  data-tooltip="Cadastrar Colaboradores">
+                       <a href="/cadastro-colaboradores"> <img src="imagens/lgo-cadastrar-colaboradores.png" alt="Colaboradores"></a>
+                        
                     </div>
-                    <div class="mini-item" data-tooltip="Cadastrar Loja">
-                        <a href="cadastro_lojas.html"> <img src="imagens/cadastrar-loja.png" alt="Cadastrar Loja" class="img-fluid"></a>
-                     </div>
-                     <div class="mini-item" data-tooltip="Listar Colaboradores">
-                         <a href="listar_colaboradores.html"><img src="imagens/listar-colaboradores.png" alt="Listar Colaboradores" class="img-fluid"></a>
-                     </div>
-                     <div class="mini-item" data-tooltip="Listar Lojas">
-                        <a href="listar_lojas.html"><img src="imagens/listar-lojas.png" alt="Listar Lojas" class="img-fluid"></a>
-                     </div>
-                     <div class="mini-item" data-tooltip="Editar Colaboradores">
-                         <a href="editar_colaboradores.html"><img src="imagens/editar-colaboradores.png" alt="Editar Colaboradores" class="img-fluid"></a>
-                     </div>
-                     <div class="mini-item" data-tooltip="Editar Lojas">
-                         <a href="editar_lojas.html"><img src="imagens/editar-lojas.png" alt="Editar Lojas" class="img-fluid"></a>
-                     </div>
+                    <div class="mini-item"  data-tooltip="Cadastrar Loja">
+                        <a href="/cadastro-lojas"><img src="imagens/cadastrar-loja.png" alt="Relatórios"></a>
+                    </div>
+                    <div class="mini-item" data-tooltip="Listar Colaboradores">
+                        <a href="/listar-colaboradores"><img src="imagens/listar-colaboradores.png" alt="Listar Colaboradores"></a>
+                    </div>
+                    <div class="mini-item" data-tooltip="Listar Lojas">
+                        <a href="/listar-lojas"><img src="imagens/listar-lojas.png" alt="Listar Lojas"></a>
+                    </div>
+                    <div class="mini-item"  data-tooltip="Editar Colaboradores">
+                       <a href="/editar-colaboradores"> <img src="imagens/editar-colaboradores.png" alt="Documentos"></a>
+                    </div>
+                    <div class="mini-item" data-tooltip="Editar Lojas">
+                        <a href="/editar-lojas"><img src="imagens/editar-lojas.png" alt="Configurações"></a>
+                    </div>
                 </div>
-                <a href="index.html" class="sair"><button id="logout" class="btn btn-danger"><strong></strong> Sair</button></a>
+                <a href="/" class="sair"><button id="logout" class="btn-sair"><strong></strong> Sair</button></a>
             </div>
         </div>
     </div>
@@ -84,5 +89,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <script src="js/cadastro_colaboradores.js"></script>
-</body>
+    <script src="js/informacoesusuario.js"></script>
+    <script src="js/dataHoraAtual.js"></script>
+    <script src="js/controleDeAltenticacao.js"></script>
+    <script src="js/logout.js"></script>
 </html>

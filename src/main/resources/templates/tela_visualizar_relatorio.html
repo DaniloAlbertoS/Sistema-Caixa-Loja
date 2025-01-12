@@ -4,50 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/visualizar_relatorios.css">
-    <script src="js/atualizacao_de_hora.js"></script>
-    <!-- Adicionando o Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <title>Visualizar Relatórios</title>
+    <title>Visualizar Relatórios Individuais</title>
 </head>
 <body>
     <div class="container">
         <!-- Conteúdo Principal -->
         <div class="content">
             <div class="header">
-                <h1>Visualizar Relatórios</h1>
+                <h1>Visualizar Relatórios Individuais</h1>
             </div>
-    
-            <!-- Info Linha -->
-            <div class="info-line">
-                <div class="left">ID da Loja: <span id="store-id">12345</span></div>
-                <div class="right">
-                    <div class="icon-info">
-                        <!-- Usando o ícone de calendário do Font Awesome -->
-                        <i class="fas fa-calendar-alt"></i>
-                        <span id="current-date">14/12/2024</span>
-                    </div>
-                    <div class="icon-info">
-                        <!-- Usando o ícone de relógio do Font Awesome -->
-                        <i class="fas fa-clock"></i>
-                        <span id="current-time">15:30</span>
-                    </div>
-                </div>
-            </div>
-    
+
+            <!-- Informações do ID da Loja -->
+            <!--<div class="info-line">
+                <label for="store-id">ID da Loja:</label>
+                <input type="text" id="store-id" value="12345" readonly>
+            </div>--!>
+
             <!-- Filtro -->
             <div class="filter-section">
                 <label for="filter">Filtrar por:</label>
-                <input type="text" id="filter" placeholder="Valor Caixa, Valor Cofre, Despesas...">
-                <button>
-                    <i class="fas fa-search"></i>
-                    Pesquisar
+                <input type="text" id="filter" placeholder="Valor caixa, Valor cofre, Despesas...">
+                <button id="search-button">
+                    <i class="fas fa-search"></i> Pesquisar
                 </button>
             </div>
-    
-            <!-- Tabela -->
+
+            <!-- Tabela de Relatórios -->
             <table class="report-table">
                 <thead>
                     <tr>
+                        <th><input type="checkbox" id="select-all"></th>
                         <th>ID</th>
                         <th>Data</th>
                         <th>Hora</th>
@@ -57,46 +43,49 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    
+                    <!-- Linhas preenchidas dinamicamente -->
                 </tbody>
             </table>
-            <!-- Botões de ação fora da tabela -->
+
+            <!-- Botões de Ação -->
             <div class="action-buttons">
-                <button class="btn-delete">Excluir Selecionados</button>
-                <button class="btn-cancel">Cancelar</button>
+                <button class="btn-delete">[F7] Excluir</button>
+                <button class="btn-cancel">[F8] Cancelar</button>
             </div>
         </div>
-        <!-- Área da direita -->
+
+        <!-- Menu Lateral Direito -->
         <div class="user-info">
             <h2>Bem-vindo</h2>
-            <p><strong>Usuário:</strong> </p>
-            <p><strong>Mat:</strong> </p>
+    <p><strong>Usuário:</strong> <span id="user-name">Carregando...</span></p>
+    <p><strong>Mat:</strong> <span id="user-mat">Carregando...</span></p>
+    <div class="date-time">
+        <p><strong>Data Atual:</strong> <span id="current-date"></span></p>
+        <p><strong>Hora Atual:</strong> <span id="current-time"></span></p>
+    </div>
             <div class="user-image" data-tooltip="Tela Inicial">
-                <a href="menu-gerencia.html"><img src="imagens/logo-de-usuarios.png" alt="Usuário"></a>
+                <a href="/menu-gerencia"><img src="imagens/logo-de-usuarios.png" alt="Usuário"></a>
             </div>
             <div class="mini-menu">
-                <div class="mini-item disabled" data-tooltip="Visualizar Relatórios">
-                    <a href="tela_visualizar_relatorio.html"><img src="imagens/visualizar_relatorios.png" alt="Visualizar Relatórios"></a>
+                <div class="mini-item disabled"  data-tooltip="Visualizar Relatórios">
+                    <a href="/visualizar-relatorio"><img src="imagens/visualizar_relatorios.png" alt="Visualizar Relatórios"></a>
                 </div>
-                <div class="mini-item" data-tooltip="Visualizar Relatórios Diários">
-                    <a href="tela_visualizar_relatorios_diarios.html"><img src="imagens/visualizar_relatorios_diarios.png" alt="Visualizar Envios Diários"></a>
+                <div class="mini-item"  data-tooltip="Visualizar Relatórios Diários">
+                    <a href="/visualizar-relatorios-diarios"><img src="imagens/visualizar_relatorios_diarios.png" alt="Visualizar Envios Diários"></a>
                 </div>
                 <div class="mini-item" data-tooltip="Cadastrar Relatórios">
-                    <a href="cadastro_de_relatorios.html"><img src="imagens/cadastrar_relatorios.png" alt="Cadastrar Relatórios"></a>
+                    <a href="/cadastro-relatorios"><img src="imagens/cadastrar_relatorios.png" alt="Cadastrar Relatórios"></a>
                 </div>
             </div>
-            <a href="index.html" class="sair"><button id="logout" class="btn-sair"><strong></strong> Sair</button></a>
+            <a href="/" class="sair"><button id="logout" class="btn-sair"><strong></strong> Sair</button></a>
         </div>
+        
     </div>
+
     <script src="js/visualizar_relatorio.js"></script>
-    <script src="js/atualizacao_de_hora.js"></script>
+    <script src="js/informacoesusuario.js"></script>
+    <script src="js/dataHoraAtual.js"></script>
+    <script src="js/controleDeAltenticacao.js"></script>
+    <script src="js/logout.js"></script>
 </body>
 </html>

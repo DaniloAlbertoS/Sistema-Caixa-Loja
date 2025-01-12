@@ -1,111 +1,111 @@
-// Dados fictícios de colaboradores
-const colaboradores = [
-    { id: 1, nome: 'João Silva', email: 'joao@email.com', telefone: '(11) 99999-9999' },
-    { id: 2, nome: 'Maria Santos', email: 'maria@email.com', telefone: '(11) 98888-8888' },
-    { id: 3, nome: 'José Almeida', email: 'jose@email.com', telefone: '(21) 97777-7777' },
-    // Adicione os 20 colaboradores restantes
-    ...[...Array(20).keys()].map(i => ({
-        id: i + 4,
-        nome: `Pessoa ${i + 4}`,
-        email: `pessoa${i + 4}@email.com`,
-        telefone: `(00) 90000-${(i).toString().padStart(4, '0')}`
-    }))
-];
 
 
-function preencherTabela() {
+document.addEventListener('DOMContentLoaded', () => {
+    const btnCancelar = document.querySelectorAll('.btn-cancel'); // Seleciona todos os botões com a classe
+
+    btnCancelar.forEach((btn) => {
+        btn.addEventListener('click', () => {
+            window.location.href = '/tela-financeiro';
+        });
+    });
+    carregarColaboradores('financeiro'); // Carrega tabela Financeiro por padrão
+
+    // Troca entre tabelas
+    document.getElementById('table-select').addEventListener('change', (event) => {
+        const tabelaSelecionada = event.target.value.toLowerCase();
+        carregarColaboradores(tabelaSelecionada);
+    });
+
+    // Filtrar tabela
+    document.getElementById('search-input').addEventListener('input', (event) => {
+        const termoBusca = event.target.value.toLowerCase();
+        filtrarTabela(termoBusca);
+    });
+
+    // Excluir colaboradores selecionados
+    document.querySelector('.btn-delete').addEventListener('click', excluirSelecionados);
+});
+
+// Função para carregar colaboradores
+function carregarColaboradores(tabela) {
+    fetch(`/api/${tabela}`)
+        .then(response => {
+            if (!response.ok) throw new Error(`Erro ao carregar dados da tabela ${tabela}`);
+            return response.json();
+        })
+        .then(colaboradores => preencherTabela(colaboradores))
+        .catch(error => console.error('Erro ao carregar colaboradores:', error));
+}
+
+// Preencher a tabela com os dados corretos
+function preencherTabela(colaboradores) {
     const tbody = document.getElementById('collaborator-list');
-    tbody.innerHTML = ''; 
+    tbody.innerHTML = ''; // Limpa a tabela
+
     colaboradores.forEach(colaborador => {
         const tr = document.createElement('tr');
         tr.innerHTML = `
-            <td><input type="checkbox" class="select-item"></td>
-            <td>${colaborador.id}</td>
+            <td><input type="checkbox" class="select-item" data-id="${colaborador.idfinaceiro || colaborador.idgerencia}"></td>
             <td>${colaborador.nome}</td>
-            <td>${colaborador.email}</td>
-            <td>${colaborador.telefone}</td>
+            <td>${colaborador.matricula}</td>
+            <td>${colaborador.cargo || ''}</td>
+            <td>${colaborador.cpf || ''}</td>
         `;
         tbody.appendChild(tr);
     });
 }
 
-a
-function filtrarTabela(event) {
-    const termoBusca = event.target.value.toLowerCase();
-    const tabela = colaboradores.filter(colaborador => 
-        colaborador.nome.toLowerCase().includes(termoBusca) ||
-        colaborador.email.toLowerCase().includes(termoBusca) ||
-        colaborador.telefone.toLowerCase().includes(termoBusca)
-    );
+// Filtrar os colaboradores na tabela
+function filtrarTabela(termoBusca) {
+    const linhas = document.querySelectorAll('#collaborator-list tr');
+    linhas.forEach(linha => {
+        const textoLinha = linha.textContent.toLowerCase();
+        linha.style.display = textoLinha.includes(termoBusca) ? '' : 'none';
+    });
+}
+
+// Função para excluir os colaboradores selecionados
+function excluirSelecionados() {
+    const selecionados = document.querySelectorAll('.select-item:checked');
+
+    if (selecionados.length === 0) {
+        alert('Nenhum colaborador selecionado para exclusão.');
+        return;
+    }
+
+    // Determina a tabela atual
+    const tabelaAtual = document.getElementById('table-select').value.toLowerCase();
+
+    selecionados.forEach(checkbox => {
+        const id = checkbox.getAttribute('data-id'); // Obtém o ID do atributo data-id
+
+        if (!id || isNaN(id)) {
+            console.error(`ID inválido: ${id}`);
+            alert(`Erro ao excluir colaborador. ID inválido: ${id}`);
+            return;
+        }
+
+        // Requisição DELETE para a tabela atual
+        fetch(`/api/${tabelaAtual}/${id}`, { method: 'DELETE' })
+            .then(response => {
+                if (response.ok) {
+                    const row = document.querySelector(`.select-item[data-id="${id}"]`).closest('tr');
+                    row.remove(); // Remove a linha da tabela
+                    console.log(`Colaborador com ID ${id} excluído da tabela ${tabelaAtual}.`);
+                    alert(`Colaborador com ID ${id} excluído com sucesso.`);
+                } else {
+                    console.error(`Erro ao excluir colaborador com ID ${id} na tabela ${tabelaAtual}`);
+                    alert(`Erro ao excluir colaborador com ID ${id}.`);
+                }
+            })
+            .catch(error => {
+                console.error('Erro na exclusão:', error);
+                alert('Erro ao conectar ao servidor. Tente novamente.');
+            });
+    });
+
+    // Ação do botão "Cancelar"
     
-    const tbody = document.getElementById('collaborator-list');
-    tbody.innerHTML = ''; 
-    tabela.forEach(colaborador => {
-        const tr = document.createElement('tr');
-        tr.innerHTML = `
-            <td><input type="checkbox" class="select-item"></td>
-            <td>${colaborador.id}</td>
-            <td>${colaborador.nome}</td>
-            <td>${colaborador.email}</td>
-            <td>${colaborador.telefone}</td>
-        `;
-        tbody.appendChild(tr);
-    });
+
 }
-
-// Chama a função para preencher a tabela ao carregar a página
-document.addEventListener('DOMContentLoaded', () => {
-    preencherTabela();
-
-    // Adiciona o evento de filtragem
-    const searchInput = document.getElementById('search-input');
-    searchInput.addEventListener('input', filtrarTabela);
-});
-
-// Excluir itens selecionados
-document.querySelector('.btn-delete').addEventListener('click', () => {
-    const checkboxes = document.querySelectorAll('.select-item:checked');
-    checkboxes.forEach(checkbox => {
-        const row = checkbox.closest('tr');
-        row.remove(); // Remove a linha da tabela
-    });
-    alert('Itens selecionados foram excluídos.');
-});
-
-// Selecionar todos os checkboxes
-document.getElementById('select-all').addEventListener('change', (event) => {
-    const checkboxes = document.querySelectorAll('.select-item');
-    checkboxes.forEach(checkbox => {
-        checkbox.checked = event.target.checked;
-    });
-});
-
-document.querySelector('.btn-delete').addEventListener('click', () => {
-    const checkboxes = document.querySelectorAll('.select-item:checked');
-    checkboxes.forEach(checkbox => {
-        const row = checkbox.closest('tr');
-        const id = parseInt(row.children[1].textContent);
-       
-        const index = colaboradores.findIndex(colaborador => colaborador.id === id);
-        if (index !== -1) colaboradores.splice(index, 1);
-        row.remove();
-    });
-    alert('Itens selecionados foram excluídos.');
-});
-
-document.querySelector('.search-button').addEventListener('click', () => {
-    const searchInput = document.getElementById('search-input');
-    filtrarTabela({ target: searchInput });
-});
-
-document.querySelectorAll('th').forEach((header, index) => {
-    header.addEventListener('click', () => {
-        colaboradores.sort((a, b) => {
-            const field = Object.keys(colaboradores[0])[index - 1];
-            return a[field] > b[field] ? 1 : -1;
-        });
-        preencherTabela();
-    });
-});
-
 

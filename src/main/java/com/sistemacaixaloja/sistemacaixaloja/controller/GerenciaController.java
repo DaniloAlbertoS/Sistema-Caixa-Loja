@@ -25,6 +25,17 @@ public class GerenciaController {
         return ResponseEntity.ok(gerenciaService.listarTodos());
     }
 
+    @DeleteMapping("/{id}")
+public ResponseEntity<Void> excluirPorId(@PathVariable int id) {
+    if (gerenciaService.excluirPorId(id)) {
+        return ResponseEntity.noContent().build();
+    }
+    return ResponseEntity.notFound().build();
+}
+
+    
+
+
     @GetMapping("/{id}")
     public ResponseEntity<Gerencia> buscarPorId(@PathVariable int id) {
         Gerencia gerencia = gerenciaService.buscarPorId(id);
@@ -32,12 +43,6 @@ public class GerenciaController {
             return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok(gerencia);
-    }
-
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> excluirPorId(@PathVariable int id) {
-        gerenciaService.excluirPorId(id);
-        return ResponseEntity.noContent().build();
     }
 
     @GetMapping("/matricula/{matricula}")

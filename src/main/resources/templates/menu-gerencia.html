@@ -18,15 +18,15 @@
             <!-- Área dos Menus -->
             <div class="menu-container">
                 <div class="menu-item">
-                    <a href="tela_visualizar_relatorio.html"><img src="imagens/visualizar_relatorios.png" alt="Visualizar Relatórios"></a>
+                    <a href="/visualizar-relatorio"><img src="imagens/visualizar_relatorios.png" alt="Visualizar Relatórios"></a>
                     <p><strong></strong> Visualizar Relatórios</p>
                 </div>
                 <div class="menu-item">
-                    <a href="tela_visualizar_relatorios_diarios.html"><img src="imagens/visualizar_relatorios_diarios.png" alt="Visualizar Envios Diários"></a>
+                    <a href="/visualizar-relatorios-diarios"><img src="imagens/visualizar_relatorios_diarios.png" alt="Visualizar Envios Diários"></a>
                     <p><strong></strong> Visualizar Envios Diários</p>
                 </div>
                 <div class="menu-item">
-                    <a href="cadastro_de_relatorios.html"><img src="imagens/cadastrar_relatorios.png" alt="Cadastrar Relatórios"></a>
+                    <a href="/cadastro-relatorios"><img src="imagens/cadastrar_relatorios.png" alt="Cadastrar Relatórios"></a>
                     <p><strong></strong> Cadastrar Relatórios</p>
                 </div>
             </div>
@@ -34,14 +34,22 @@
             <!-- Área de Informações do Usuário -->
             <div class="user-info">
                 <h2>Bem-vindo</h2>
-                <p><strong>Usuário:</strong> </p>
-                <p><strong>Mat:</strong> </p>
+                <p><strong>Usuário:</strong> <span id="user-name">Carregando...</span></p>
+                <p><strong>Mat:</strong> <span id="user-mat">Carregando...</span></p>
+                <div class="date-time">
+                    <p><strong>Data Atual:</strong> <span id="current-date"></span></p>
+                    <p><strong>Hora Atual:</strong> <span id="current-time"></span></p>
+                </div>
                 <div class="user-image">
                     <img src="imagens/logo-de-usuarios.png" alt="Imagem do Usuário">
                 </div>
-                <a href="index.html" class="sair"><button id="logout" class="btn-sair"><strong></strong> Sair</button></a>
+                <a href="/" class="sair"><button id="logout" class="btn-sair"><strong></strong> Sair</button></a>
             </div>
         </div>
     </div>
 </body>
+<script src="js/informacoesusuario.js"></script>
+<script src="js/dataHoraAtual.js"></script>
+<script src="js/controleDeAltenticacao.js"></script>
+<script src="js/logout.js"></script>
 </html>

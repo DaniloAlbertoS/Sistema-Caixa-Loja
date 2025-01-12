@@ -1,101 +1,104 @@
-// Dados fictícios de lojas
-const lojas = [
-    { id: 1, nome: 'Loja A', endereco: 'Rua 1, 123', funcionamento: '08:00 - 18:00' },
-    { id: 2, nome: 'Loja B', endereco: 'Rua 2, 456', funcionamento: '09:00 - 19:00' },
-    { id: 3, nome: 'Loja C', endereco: 'Rua 3, 789', funcionamento: '10:00 - 20:00' },
-    // Adicione mais lojas conforme necessário
-    ...[...Array(20).keys()].map(i => ({
-        id: i + 4,
-        nome: `Loja ${String.fromCharCode(65 + (i % 26))}`,
-        endereco: `Rua ${i + 4}, ${100 + i}`,
-        funcionamento: `${8 + (i % 10)}:00 - ${18 + (i % 6)}:00`
-    }))
-];
-
-// Função para preencher a tabela com os dados das lojas
-function preencherTabela() {
-    const tbody = document.getElementById('store-list');
-    tbody.innerHTML = ''; // Limpa a tabela antes de adicionar os dados
-    lojas.forEach(loja => {
-        const tr = document.createElement('tr');
-        tr.innerHTML = `
-            <td><input type="checkbox" class="select-item"></td>
-            <td>${loja.id}</td>
-            <td>${loja.nome}</td>
-            <td>${loja.endereco}</td>
-            <td>${loja.funcionamento}</td>
-        `;
-        tbody.appendChild(tr);
-    });
-}
-
-// Função para filtrar as lojas com base no valor da pesquisa
-function filtrarTabela(event) {
-    const termoBusca = event.target.value.toLowerCase();
-    const tabela = lojas.filter(loja => 
-        loja.nome.toLowerCase().includes(termoBusca) ||
-        loja.endereco.toLowerCase().includes(termoBusca) ||
-        loja.funcionamento.toLowerCase().includes(termoBusca)
-    );
-
-    const tbody = document.getElementById('store-list');
-    tbody.innerHTML = ''; 
-    tabela.forEach(loja => {
-        const tr = document.createElement('tr');
-        tr.innerHTML = `
-            <td><input type="checkbox" class="select-item"></td>
-            <td>${loja.id}</td>
-            <td>${loja.nome}</td>
-            <td>${loja.endereco}</td>
-            <td>${loja.funcionamento}</td>
-        `;
-        tbody.appendChild(tr);
-    });
-}
-
-
-document.querySelector('.btn-delete').addEventListener('click', () => {
-    const checkboxes = document.querySelectorAll('.select-item:checked');
-    checkboxes.forEach(checkbox => {
-        const row = checkbox.closest('tr');
-        const id = parseInt(row.children[1].textContent);
-        // Remove do array de lojas
-        const index = lojas.findIndex(loja => loja.id === id);
-        if (index !== -1) lojas.splice(index, 1);
-        row.remove();
-    });
-    alert('Itens selecionados foram excluídos.');
-});
-
-
-document.getElementById('select-all').addEventListener('change', (event) => {
-    const checkboxes = document.querySelectorAll('.select-item');
-    checkboxes.forEach(checkbox => {
-        checkbox.checked = event.target.checked;
-    });
-});
-
-
-document.querySelector('.btn-cancel').addEventListener('click', () => {
-    preencherTabela();
-    alert('Alterações canceladas e tabela original restaurada.');
-});
-
-
 document.addEventListener('DOMContentLoaded', () => {
-    preencherTabela();
+    carregarLojas(); // Carrega a tabela de lojas ao iniciar
 
-    // Adiciona o evento de filtragem
-    const searchInput = document.getElementById('search-input');
-    searchInput.addEventListener('input', filtrarTabela);
+    // Excluir lojas selecionadas
+    document.querySelector('.btn-delete').addEventListener('click', excluirSelecionados);
 
-   
-    document.querySelectorAll('th').forEach((header, index) => {
-        header.addEventListener('click', () => {
-            if (index === 0) return; // Ignorar checkbox
-            const field = ['id', 'nome', 'endereco', 'funcionamento'][index - 1];
-            lojas.sort((a, b) => a[field] > b[field] ? 1 : -1);
-            preencherTabela();
+    // Selecionar ou desmarcar todos os checkboxes
+    document.getElementById('select-all').addEventListener('change', (event) => {
+        const checkboxes = document.querySelectorAll('.select-item');
+        checkboxes.forEach(checkbox => {
+            checkbox.checked = event.target.checked;
         });
     });
+
+    // Filtrar tabela
+    document.getElementById('search-input').addEventListener('input', (event) => {
+        const termoBusca = event.target.value.toLowerCase();
+        filtrarTabela(termoBusca);
+    });
 });
+
+// Função para carregar lojas
+function carregarLojas() {
+    fetch('/api/lojas') // Endpoint para buscar lojas
+        .then(response => {
+            if (!response.ok) throw new Error('Erro ao carregar lojas.');
+            return response.json();
+        })
+        .then(lojas => {
+            console.log('Lojas retornadas pela API:', lojas); // Log de depuração
+            preencherTabela(lojas);
+        })
+        .catch(error => console.error('Erro ao carregar lojas:', error));
+}
+
+// Função para preencher a tabela com os dados das lojas
+function preencherTabela(lojas) {
+    const tbody = document.getElementById('store-list');
+    tbody.innerHTML = ''; // Limpa a tabela
+
+    lojas.forEach(loja => {
+        console.log(`Número Loja: ${loja.numeroloja}, Nome: ${loja.nome}`); // Depuração adicional
+
+        const numeroValido = loja.numeroloja ? loja.numeroloja : 'undefined';
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+            <td><input type="checkbox" class="select-item" data-numeroloja="${numeroValido}"></td>
+            <td>${loja.numeroloja || 'Sem Número'}</td>
+            <td>${loja.nome || 'Sem Nome'}</td>
+            <td>${loja.endereco || 'Sem Endereço'}</td>
+            <td>${loja.horario_funcionamento || 'Sem Horário'}</td>
+        `;
+        tbody.appendChild(tr);
+    });
+}
+
+// Função para filtrar os dados da tabela
+function filtrarTabela(termoBusca) {
+    const linhas = document.querySelectorAll('#store-list tr');
+    linhas.forEach(linha => {
+        const textoLinha = linha.textContent.toLowerCase();
+        linha.style.display = textoLinha.includes(termoBusca) ? '' : 'none';
+    });
+}
+
+// Função para excluir lojas selecionadas
+function excluirSelecionados() {
+    const selecionados = document.querySelectorAll('.select-item:checked');
+
+    if (selecionados.length === 0) {
+        alert('Nenhuma loja selecionada para exclusão.');
+        return;
+    }
+
+    selecionados.forEach(checkbox => {
+        const numeroLoja = checkbox.getAttribute('data-numeroloja');
+        console.log('Checkbox selecionado:', checkbox);
+        console.log('Número da Loja capturado do data-numeroloja:', numeroLoja);
+
+        if (!numeroLoja || isNaN(numeroLoja)) {
+            console.error(`Número da Loja inválido: ${numeroLoja}`);
+            alert(`Erro ao excluir loja. Número da Loja inválido: ${numeroLoja}`);
+            return;
+        }
+
+        // Faz a requisição DELETE para o servidor
+        fetch(`/api/lojas/${numeroLoja}`, { method: 'DELETE' })
+            .then(response => {
+                if (response.ok) {
+                    const row = checkbox.closest('tr');
+                    row.remove(); // Remove a linha da tabela
+                    console.log(`Loja com Número ${numeroLoja} excluída.`);
+                    alert(`Loja com Número ${numeroLoja} excluída com sucesso.`);
+                } else {
+                    console.error(`Erro ao excluir loja com Número ${numeroLoja}`);
+                    alert(`Erro ao excluir loja com Número ${numeroLoja}.`);
+                }
+            })
+            .catch(error => {
+                console.error('Erro ao excluir loja:', error);
+                alert('Erro ao conectar ao servidor. Tente novamente.');
+            });
+    });
+}

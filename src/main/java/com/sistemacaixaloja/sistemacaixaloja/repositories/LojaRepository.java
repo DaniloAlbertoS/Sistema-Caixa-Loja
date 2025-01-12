@@ -6,7 +6,9 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface LojaRepository extends JpaRepository<Loja, Integer> {
-    Loja findByNumeroloja(int numeroloja); // Use exatamente o nome da propriedade
+    Loja findByNumeroloja(int numeroloja); // Método para buscar loja pelo número da loja
+    void deleteByNumeroloja(int numeroloja); // Adiciona exclusão direta pelo número da loja
 }
+
 
 

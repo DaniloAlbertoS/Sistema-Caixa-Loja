@@ -1,4 +1,100 @@
-// Função para exibir mensagens ao usuário
+document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('btn-salvar').addEventListener('click', () => {
+        console.log('Botão Salvar clicado');
+    });
+    
+    // Evento para Limpar
+    document.getElementById('btn-limpar').addEventListener('click', () => {
+        console.log('Botão Limpar clicado');
+        document.querySelectorAll('.form input').forEach(input => (input.value = ''));
+        exibirMensagem('Campos limpos com sucesso!', true);
+    });
+
+    // Evento para Cancelar
+    document.getElementById('btn-cancelar').addEventListener('click', () => {
+        console.log('Botão Cancelar clicado');
+        window.location.href = '/tela-financeiro';
+    });
+});
+
+
+document.getElementById('btn-pesquisar').addEventListener('click', () => {
+    const numeroLoja = document.getElementById('pesquisar_id').value;
+
+    if (!numeroLoja) {
+        exibirMensagem('Digite o número da loja para pesquisar.', false);
+        return;
+    }
+    fetch(`/api/lojas/${numeroLoja}`)
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Loja não encontrada.');
+        }
+        return response.json();
+    })
+    .then(data => {
+        // Preenche os campos com os dados retornados
+        document.getElementById('id_loja').value = data.idLoja || '';
+        document.getElementById('numero_loja').value = data.numeroloja || ''; // Certifique-se de que este campo está sendo preenchido
+        document.getElementById('nome_loja').value = data.nome || '';
+        document.getElementById('endereco').value = data.endereco || '';
+        document.getElementById('cidade').value = data.cidade || '';
+        document.getElementById('telefone').value = data.telefone || '';
+        document.getElementById('email').value = data.email || '';
+        document.getElementById('funcionamento').value = data.horario_funcionamento || '';
+        document.getElementById('cnpj').value = data.cnpj || '';
+
+        exibirMensagem('Loja encontrada com sucesso!', true);
+    })
+    .catch(error => {
+        exibirMensagem(error.message, false);
+    });
+
+});
+
+document.getElementById('btn-salvar').addEventListener('click', () => {
+    const numeroLoja = document.getElementById('numero_loja').value;
+
+    if (!numeroLoja) {
+        console.log('Erro: Número da loja não encontrado.');
+        exibirMensagem('Pesquise uma loja antes de salvar as alterações.', false);
+        return;
+    }
+
+    const lojaAtualizada = {
+        nome: document.getElementById('nome_loja').value,
+        endereco: document.getElementById('endereco').value,
+        cidade: document.getElementById('cidade').value,
+        telefone: document.getElementById('telefone').value,
+        email: document.getElementById('email').value,
+        horario_funcionamento: document.getElementById('funcionamento').value,
+        cnpj: document.getElementById('cnpj').value
+    };
+
+    console.log('Dados para salvar:', lojaAtualizada);
+
+    fetch(`/api/lojas/${numeroLoja}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(lojaAtualizada)
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Erro ao salvar as alterações.');
+            }
+            return response.text();
+        })
+        .then(message => {
+            console.log('Resposta do servidor:', message);
+            exibirMensagem(message, true);
+        })
+        .catch(error => {
+            console.error('Erro ao salvar:', error);
+            exibirMensagem(error.message, false);
+        });
+});
 function exibirMensagem(texto, sucesso = true) {
     const mensagem = document.getElementById('mensagem');
     mensagem.textContent = texto;
@@ -9,88 +105,3 @@ function exibirMensagem(texto, sucesso = true) {
     }, 3000);
 }
 
-
-document.addEventListener('DOMContentLoaded', () => {
-    const telefoneInput = document.getElementById('telefone');
-    const cnpjInput = document.getElementById('cnpj');
-    telefoneInput.setAttribute('pattern', '\\(\\d{2}\\) \\d{4,5}-\\d{4}');
-    cnpjInput.setAttribute('pattern', '\\d{2}\\.\\d{3}\\.\\d{3}/\\d{4}-\\d{2}');
-});
-
-// Evento para o botão Salvar
-document.getElementById('btn-salvar').addEventListener('click', () => {
-    const nome = document.getElementById('nome_loja').value;
-    const endereco = document.getElementById('endereco').value;
-    const telefone = document.getElementById('telefone').value;
-
-    if (!nome || !endereco || !telefone) {
-        exibirMensagem('Preencha todos os campos obrigatórios.', false);
-        return;
-    }
-
-    // Fazer a atualização no back-end
-    const lojaAtualizada = {
-        nome: nome,
-        endereco: endereco,
-        telefone: telefone
-    };
-
-    
-    fetch(`/api/lojas/${document.getElementById('id_loja').value}`, {
-        method: 'PUT',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(lojaAtualizada)
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.sucesso) {
-            exibirMensagem('Alterações realizadas com sucesso!');
-        } else {
-            exibirMensagem('Erro ao salvar as alterações.', false);
-        }
-    })
-    .catch(error => {
-        exibirMensagem('Erro ao conectar com o servidor.', false);
-    });
-});
-
-// Evento para o botão Limpar
-document.getElementById('btn-limpar').addEventListener('click', () => {
-    document.querySelectorAll('.form input').forEach(input => input.value = '');
-    exibirMensagem('Campos limpos com sucesso!');
-});
-
-// Evento para o botão Cancelar
-document.getElementById('btn-cancelar').addEventListener('click', () => {
-    window.location.href = 'tela_financeiro.html';
-});
-
-// Evento para o botão Pesquisar
-document.getElementById('btn-pesquisar').addEventListener('click', () => {
-    const idPesquisado = document.getElementById('pesquisar_id').value;
-
-    // Buscar loja no banco de dados
-    fetch(`/api/lojas/${idPesquisado}`)
-    .then(response => response.json())
-    .then(data => {
-        if (data && data.loja) {
-            document.getElementById('id_loja').value = data.loja.id;
-            document.getElementById('numero_loja').value = data.loja.numero;
-            document.getElementById('nome_loja').value = data.loja.nome;
-            document.getElementById('endereco').value = data.loja.endereco;
-            document.getElementById('cidade').value = data.loja.cidade;
-            document.getElementById('telefone').value = data.loja.telefone;
-            document.getElementById('email').value = data.loja.email;
-            document.getElementById('funcionamento').value = data.loja.funcionamento;
-            document.getElementById('cnpj').value = data.loja.cnpj;
-            exibirMensagem('Dados carregados com sucesso!');
-        } else {
-            exibirMensagem('Loja não encontrada.', false);
-        }
-    })
-    .catch(error => {
-        exibirMensagem('Erro ao buscar a loja.', false);
-    });
-});

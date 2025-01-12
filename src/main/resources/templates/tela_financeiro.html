@@ -18,27 +18,27 @@
             <!-- Área dos Menus -->
             <div class="menu-container">
                 <div class="menu-item">
-                    <a href="tela_cadastro_colaboradores.html"><img src="imagens/lgo-cadastrar-colaboradores.png" alt="Cadastrar Colaboradores"></a>
+                    <a href="/cadastro-colaboradores"><img src="imagens/lgo-cadastrar-colaboradores.png" alt="Cadastrar Colaboradores"></a>
                     <p><strong></strong> Cadastrar Colaboradores</p>
                 </div>
                 <div class="menu-item">
-                    <a href="cadastro_lojas.html"><img src="imagens/cadastrar-loja.png" alt="Cadastrar Loja"></a>
+                    <a href="/cadastro-lojas"><img src="imagens/cadastrar-loja.png" alt="Cadastrar Loja"></a>
                     <p><strong></strong> Cadastrar Lojas</p>
                 </div>
                 <div class="menu-item">
-                    <a href="listar_colaboradores.html"><img src="imagens/listar-colaboradores.png" alt="Listar Colaboradores"></a>
+                    <a href="/listar-colaboradores"><img src="imagens/listar-colaboradores.png" alt="Listar Colaboradores"></a>
                     <p><strong></strong> Listar Colaboradores</p>
                 </div>
                 <div class="menu-item">
-                    <a href="listar_lojas.html"><img src="imagens/listar-lojas.png" alt="Listar Lojas"></a>
+                    <a href="/listar-lojas"><img src="imagens/listar-lojas.png" alt="Listar Lojas"></a>
                     <p><strong></strong> Listar Lojas</p>
                 </div>
                 <div class="menu-item">
-                    <a href="editar_colaboradores.html"><img src="imagens/editar-colaboradores.png" alt="editar_colaboradores"></a>
+                    <a href="/editar-colaboradores"><img src="imagens/editar-colaboradores.png" alt="editar_colaboradores"></a>
                     <p><strong></strong> Editar Colaboradores</p>
                 </div>
                 <div class="menu-item">
-                   <a href="editar_lojas.html"> <img src="imagens/editar-lojas.png" alt="Editar Lojas"></a>
+                   <a href="/editar-lojas"> <img src="imagens/editar-lojas.png" alt="Editar Lojas"></a>
                     <p><strong></strong> Editar Lojas</p>
                 </div>
             </div>
@@ -46,14 +46,24 @@
             <!-- Área de Informações do Usuário -->
             <div class="user-info">
                 <h2>Bem-vindo</h2>
-                <p><strong>Usuário:</strong> </p>
-                <p><strong>Mat:</strong> </p>
+                <p><strong>Usuário:</strong> <span id="user-name">Carregando...</span></p>
+                <p><strong>Mat:</strong> <span id="user-mat">Carregando...</span></p>
+                <div class="date-time">
+                    <p><strong>Data Atual:</strong> <span id="current-date"></span></p>
+                    <p><strong>Hora Atual:</strong> <span id="current-time"></span></p>
+                </div>
                 <div class="user-image">
                     <img src="imagens/logo-de-usuarios.png" alt="Imagem do Usuário">
                 </div>
-                <a href="index.html" class="sair"><button id="logout" class="btn-sair"><strong></strong> Sair</button></a>
+                <a href="/" class="sair"><button id="logout" class="btn-sair"><strong></strong> Sair</button></a>
             </div>
         </div>
     </div>
+    <script src="js/informacoesusuario.js"></script>
+    <script src="js/dataHoraAtual.js"></script>
+    <script src="js/controleDeAltenticacao.js"></script>
+    <script src="js/logout.js"></script>
+</body>
+    
 </body>
 </html>

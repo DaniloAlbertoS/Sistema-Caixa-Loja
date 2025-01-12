@@ -13,6 +13,7 @@ import jakarta.persistence.Table;
 public class Loja {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    
     private int idloja;
     
     @Column(name = "numero_loja", nullable = false) 

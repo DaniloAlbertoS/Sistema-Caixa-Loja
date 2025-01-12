@@ -25,11 +25,19 @@ public class FinanceiroService {
         return financeiroRepository.findById(id).orElse(null);
     }
 
-    public void excluirPorId(int id) {
-        financeiroRepository.deleteById(id);
+    public boolean excluirPorId(int id) {
+        if (financeiroRepository.existsById(id)) {
+            financeiroRepository.deleteById(id);
+            return true;
+        }
+        return false;
     }
-
+    
     public Financeiro buscarPorMatricula(int matricula) {
         return financeiroRepository.findByMatricula(matricula).orElse(null);
+    }
+
+    public boolean matriculaJaExiste(int matricula) {
+        return financeiroRepository.existsByMatricula(matricula);
     }
 }

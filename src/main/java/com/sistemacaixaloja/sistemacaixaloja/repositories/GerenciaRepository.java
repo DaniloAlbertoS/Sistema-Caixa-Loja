@@ -12,4 +12,6 @@ public interface GerenciaRepository extends JpaRepository<Gerencia, Integer> {
     Gerencia findByMatriculaAndCpf(int matricula, String cpf);
 
     Optional<Gerencia> findByMatricula(int matricula);
+
+    boolean existsByMatricula(int matricula);
 }

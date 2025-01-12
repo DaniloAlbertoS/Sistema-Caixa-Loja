@@ -8,72 +8,71 @@
 </head>
 <body>
     <div class="main-container">
-        <!-- Conteúdo Principal -->
         <div class="content">
             <div class="header">
                 <h1>Listar Lojas</h1>
-            </div>
-            <div class="search-filter">
-                <label for="search-input">Filtrar por Nome, Endereço, Funcionamento:</label>
-                <input type="text" id="search-input" placeholder="Digite o filtro" aria-label="Pesquisar na tabela">
-                <button class="search-button">Pesquisar</button>
+                <input type="text" id="search-input" placeholder="Buscar loja...">
             </div>
             <div class="table-container">
                 <table>
                     <thead>
                         <tr>
                             <th><input type="checkbox" id="select-all"></th>
-                            <th>ID</th>
+                            <th>Número da Loja</th>
                             <th>Nome</th>
                             <th>Endereço</th>
                             <th>Funcionamento</th>
                         </tr>
                     </thead>
                     <tbody id="store-list">
-                        <!-- A lista de lojas será preenchida via JS -->
+                        <!-- Os dados serão preenchidos dinamicamente -->
                     </tbody>
                 </table>
             </div>
-            <!-- Botões de ação fora da tabela -->
             <div class="action-buttons">
                 <button class="btn-delete">Excluir Selecionados</button>
                 <button class="btn-cancel">Cancelar</button>
             </div>
         </div>
-
-        <!-- Informações do usuário -->
         <div class="user-info">
             <h2>Bem-vindo</h2>
-            <p><strong>Usuário:</strong></p>
-            <p><strong>Mat:</strong></p>
-            <div class="user-image" data-tooltip="Tela Inicial">
-                <a href="tela_financeiro.html"><img src="imagens/logo-de-usuarios.png" alt="Usuário"></a>
+                <p><strong>Usuário:</strong> <span id="user-name">Carregando...</span></p>
+                <p><strong>Mat:</strong> <span id="user-mat">Carregando...</span></p>
+                <div class="date-time">
+                    <p><strong>Data Atual:</strong> <span id="current-date"></span></p>
+                    <p><strong>Hora Atual:</strong> <span id="current-time"></span></p>
+                </div>
+    <div class="user-image" data-tooltip="Tela Inicial">
+                <a href="/tela-financeiro"><img src="imagens/logo-de-usuarios.png" alt="Usuário"></a>
             </div>
             <div class="mini-menu">
-                <div class="mini-item" data-tooltip="Cadastrar Colaboradores">
-                    <a href="tela_cadastro_colaboradores.html" class="colaboradores"><img src="imagens/lgo-cadastrar-colaboradores.png" alt="Colaboradores"></a>
+                <div class="mini-item"  data-tooltip="Cadastrar Colaboradores">
+                   <a href="/cadastro-colaboradores"> <img src="imagens/lgo-cadastrar-colaboradores.png" alt="Colaboradores"></a>
+                    
                 </div>
-                <div class="mini-item" data-tooltip="Cadastrar Loja">
-                    <a href="cadastro_lojas.html"> <img src="imagens/cadastrar-loja.png" alt="Cadastrar Loja"></a>
+                <div class="mini-item"  data-tooltip="Cadastrar Loja">
+                    <a href="/cadastro-lojas"><img src="imagens/cadastrar-loja.png" alt="Relatórios"></a>
                 </div>
                 <div class="mini-item" data-tooltip="Listar Colaboradores">
-                    <a href="listar_colaboradores.html"><img src="imagens/listar-colaboradores.png" alt="Listar Colaboradores"></a>
+                    <a href="/listar-colaboradores"><img src="imagens/listar-colaboradores.png" alt="Listar Colaboradores"></a>
                 </div>
                 <div class="mini-item disabled" data-tooltip="Listar Lojas">
-                    <a href="listar_lojas.html"><img src="imagens/listar-lojas.png" alt="Listar Lojas"></a>
+                    <a href="/listar-lojas"><img src="imagens/listar-lojas.png" alt="Listar Lojas"></a>
                 </div>
-                <div class="mini-item" data-tooltip="Editar Colaboradores">
-                    <a href="editar_colaboradores.html"><img src="imagens/editar-colaboradores.png" alt="Editar Colaboradores"></a>
+                <div class="mini-item"  data-tooltip="Editar Colaboradores">
+                   <a href="/editar-colaboradores"> <img src="imagens/editar-colaboradores.png" alt="Documentos"></a>
                 </div>
                 <div class="mini-item" data-tooltip="Editar Lojas">
-                    <a href="editar_lojas.html"><img src="imagens/editar-lojas.png" alt="Editar Lojas"></a>
+                    <a href="/editar-lojas"><img src="imagens/editar-lojas.png" alt="Configurações"></a>
                 </div>
             </div>
-            <a href="index.html" class="sair"><button id="logout" class="btn-sair"><strong></strong> Sair</button></a>
+            <a href="/" class="sair"><button id="logout" class="btn-sair"><strong></strong> Sair</button></a>
         </div>
     </div>
-
-    <script src="js/scriptmenu_listar_lojas.js"></script>
-    <script src="js/listar_lojas.js"></script> <!-- Seu JS para manipular a lista -->
+    <script src="js/listar_lojas.js"></script>
+    <script src="js/informacoesusuario.js"></script>
+    <script src="js/dataHoraAtual.js"></script>
+    <script src="js/controleDeAltenticacao.js"></script>
+    <script src="js/logout.js"></script>
 </body>
 </html>

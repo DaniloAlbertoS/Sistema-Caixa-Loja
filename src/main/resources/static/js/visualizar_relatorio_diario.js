@@ -1,72 +1,80 @@
-
-// Função para selecionar e excluir itens da tabela
 document.addEventListener('DOMContentLoaded', () => {
-    const table = document.querySelector('.report-table tbody');
-    const btnDelete = document.querySelector('.btn-delete');
-    
-    // Evento de seleção de linha na tabela
-    table.addEventListener('click', (e) => {
-        if (e.target.tagName === 'TD') {
-            const row = e.target.parentNode;
-            row.classList.toggle('selected');
-        }
-    });
-
-    // Evento para excluir os itens selecionados
-    btnDelete.addEventListener('click', () => {
-        const selectedRows = document.querySelectorAll('.report-table tbody .selected');
-        if (selectedRows.length === 0) {
-            alert('Selecione ao menos uma linha para excluir.');
-            return;
-        }
-        
-        // Excluindo as linhas selecionadas
-        selectedRows.forEach(row => row.remove());
-        alert('Linhas excluídas com sucesso.');
-    });
-});
-
-// Função para buscar e filtrar dados da tabela
-document.getElementById('filter').addEventListener('input', (e) => {
-    const filterValue = e.target.value.toLowerCase();
-    const rows = document.querySelectorAll('.report-table tbody tr');
-    
-    rows.forEach(row => {
-        const cells = row.querySelectorAll('td');
-        let matches = false;
-
-        cells.forEach(cell => {
-            if (cell.textContent.toLowerCase().includes(filterValue)) {
-                matches = true;
-            }
-        });
-
-        row.style.display = matches ? '' : 'none';
-    });
-});
-
-
-async function fetchData(filter = '') {
-    const response = await fetch('https://sua-api-url.com/relatorios-diarios?filter=' + filter);
-    const data = await response.json();
-
     const tableBody = document.querySelector('.report-table tbody');
-    tableBody.innerHTML = ''; // Limpa a tabela antes de preencher com novos dados
-
-    data.forEach(item => {
-        const row = document.createElement('tr');
-        row.innerHTML = `
-            <td>${item.id}</td>
-            <td>${item.data}</td>
-            <td>${item.hora}</td>
-            <td>${item.valor_caixa}</td>
-            <td>${item.valor_cofre}</td>
-            <td>${item.despesas}</td>
-        `;
-        tableBody.appendChild(row);
-    });
-}
 
 
-fetchData();
+    // Função para obter a data atual no formato yyyy-MM-dd
+    function getCurrentDate() {
+        const today = new Date();
+        const year = today.getFullYear();
+        const month = String(today.getMonth() + 1).padStart(2, '0'); // Mês começa do zero
+        const day = String(today.getDate()).padStart(2, '0');
+        return `${year}-${month}-${day}`;
+    }
 
+    // Função para carregar relatórios da API para a data atual
+    async function fetchReportsForToday() {
+        try {
+            const today = getCurrentDate();
+            const url = `/api/valores?filter=${today}`;
+            console.log(`Chamando a API com URL: ${url}`);
+            const response = await fetch(url);
+
+            if (!response.ok) {
+                throw new Error(`Erro ao buscar relatórios: ${response.status} - ${response.statusText}`);
+            }
+
+            const reports = await response.json();
+            console.log('Dados recebidos da API:', reports);
+
+            tableBody.innerHTML = ''; // Limpa a tabela
+
+            if (reports.length === 0) {
+                const row = document.createElement('tr');
+                row.innerHTML = `<td colspan="6" style="text-align: center;">Nenhum relatório encontrado para a data de hoje.</td>`;
+                tableBody.appendChild(row);
+                return;
+            }
+
+            // Preencher a tabela com os dados retornados
+            reports.forEach(report => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${report.idvalores_casa}</td>
+                    <td>${new Date(report.data).toLocaleDateString('pt-BR')}</td>
+                    <td>${new Date(`1970-01-01T${report.hora}`).toLocaleTimeString('pt-BR')}</td>
+                    <td>R$ ${report.valor_caixas.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</td>
+                    <td>R$ ${report.valor_cofre.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</td>
+                    <td>R$ ${report.valor_despesa.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</td>
+                `;
+                tableBody.appendChild(row);
+            });
+        } catch (error) {
+            console.error('Erro ao carregar relatórios:', error.message);
+            alert('Erro ao carregar relatórios. Verifique o console para mais detalhes.');
+        }
+    }
+
+   /* // Função para atualizar a hora e data atual no menu lateral
+    function updateDateTime() {
+        const now = new Date();
+
+        // Atualizar data no formato dd/MM/yyyy
+        const day = String(now.getDate()).padStart(2, '0');
+        const month = String(now.getMonth() + 1).padStart(2, '0');
+        const year = now.getFullYear();
+        currentDateSpan.textContent = `${day}/${month}/${year}`;
+
+        // Atualizar hora no formato HH:mm:ss
+        const hours = String(now.getHours()).padStart(2, '0');
+        const minutes = String(now.getMinutes()).padStart(2, '0');
+        const seconds = String(now.getSeconds()).padStart(2, '0');
+        currentTimeSpan.textContent = `${hours}:${minutes}:${seconds}`;
+    }*/
+
+    // Inicializar
+    fetchReportsForToday(); // Carregar relatórios da data atual
+    /*fetchUserData(); // Carregar informações do usuário logado*/
+    
+
+
+});

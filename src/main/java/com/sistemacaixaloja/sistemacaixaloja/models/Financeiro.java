@@ -16,7 +16,8 @@ public class Financeiro {
    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idfinaceiro;
+    @Column(name = "idfinaceiro") 
+    private Integer idfinaceiro;
     
     @Column(nullable = false, length =45)
     private String nome;
@@ -43,11 +44,11 @@ public class Financeiro {
         this.ativo = ativo;
     }
 
-    public int getIdfinaceiro() {
+    public Integer getIdfinaceiro() {
         return idfinaceiro;
     }
 
-    public void setIdfinaceiro(int idfinaceiro) {
+    public void setIdfinaceiro(Integer idfinaceiro) {
         this.idfinaceiro = idfinaceiro;
     }
 

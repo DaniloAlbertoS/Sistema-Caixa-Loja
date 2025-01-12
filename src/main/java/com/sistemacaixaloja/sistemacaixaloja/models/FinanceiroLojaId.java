@@ -1,44 +1,46 @@
 package com.sistemacaixaloja.sistemacaixaloja.models;
 
+import jakarta.persistence.Embeddable;
 import java.io.Serializable;
 import java.util.Objects;
 
+@Embeddable
 public class FinanceiroLojaId implements Serializable {
-    private int financeiro; // Deve corresponder ao ID do financeiro
-    private int loja;       // Deve corresponder ao ID da loja
+
+    private Integer financeiro;
+    private Integer loja;
 
     public FinanceiroLojaId() {
     }
 
-    public FinanceiroLojaId(int financeiro, int loja) {
+    public FinanceiroLojaId(Integer financeiro, Integer loja) {
         this.financeiro = financeiro;
         this.loja = loja;
     }
 
-    // Getters e Setters
-    public int getFinanceiro() {
+    public Integer getFinanceiro() {
         return financeiro;
     }
 
-    public void setFinanceiro(int financeiro) {
+    public void setFinanceiro(Integer financeiro) {
         this.financeiro = financeiro;
     }
 
-    public int getLoja() {
+    public Integer getLoja() {
         return loja;
     }
 
-    public void setLoja(int loja) {
+    public void setLoja(Integer loja) {
         this.loja = loja;
     }
 
-    // Sobrescrevendo equals e hashCode
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         FinanceiroLojaId that = (FinanceiroLojaId) o;
-        return financeiro == that.financeiro && loja == that.loja;
+        return Objects.equals(financeiro, that.financeiro) &&
+               Objects.equals(loja, that.loja);
     }
 
     @Override

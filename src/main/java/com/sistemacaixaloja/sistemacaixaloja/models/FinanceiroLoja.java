@@ -9,12 +9,12 @@ public class FinanceiroLoja {
 
     @Id
     @ManyToOne
-    @JoinColumn(name = "financeiro_idfinanceiro")
+    @JoinColumn(name = "financeiro_idfinanceiro", referencedColumnName = "idfinaceiro")
     private Financeiro financeiro;
 
     @Id
     @ManyToOne
-    @JoinColumn(name = "loja_idloja")
+    @JoinColumn(name = "loja_idloja", referencedColumnName = "idloja")
     private Loja loja;
 
     public FinanceiroLoja() {
@@ -42,3 +42,4 @@ public class FinanceiroLoja {
         this.loja = loja;
     }
 }
+

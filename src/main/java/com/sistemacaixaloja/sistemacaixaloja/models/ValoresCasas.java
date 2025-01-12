@@ -12,41 +12,44 @@ import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import java.sql.Time;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
-@Table(name="valores_casa")
+@Table(name = "valores_casa")
 public class ValoresCasas {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idvalores_casa;
-    
+    @Column(name = "idvalores_casa") // Nome da coluna no banco de dados
+    private int idvalorescasa;
+
     @Temporal(TemporalType.DATE)
     @Column(nullable = false)
     private Date data;
-    
+
     @Temporal(TemporalType.TIME)
     @Column(nullable = false)
     private Date hora;
-    
-   @Column(nullable = false)
+
+    @Column(nullable = false)
     private double valor_caixas;
 
     @Column(nullable = false)
     private double valor_cofre;
 
     @Column(nullable = false)
-    private double valor_despesa = 300.00 ;
-    
+    private double valor_despesa = 300.00;
+
     @ManyToOne
-    @JoinColumn(name="gerencia_casa")
+    @JoinColumn(name = "gerencia_casa")
     private Gerencia gerencia;
 
     public ValoresCasas() {
     }
 
-    public ValoresCasas(Date data, Date hora, double valor_caixas, double valor_cofre, double valor_despesa, Gerencia gerencia) {
+    public ValoresCasas(Date data, Date hora, double valor_caixas, double valor_cofre, double valor_despesa,
+            Gerencia gerencia) {
         this.data = data;
         this.hora = hora;
         this.valor_caixas = valor_caixas;
@@ -56,11 +59,11 @@ public class ValoresCasas {
     }
 
     public int getIdvalores_casa() {
-        return idvalores_casa;
+        return idvalorescasa;
     }
 
-    public void setIdvalores_casa(int idvalores_casa) {
-        this.idvalores_casa = idvalores_casa;
+    public void setIdvalores_casa(int idvalorescasa) {
+        this.idvalorescasa = idvalorescasa;
     }
 
     public Date getData() {
@@ -111,5 +114,4 @@ public class ValoresCasas {
         this.gerencia = gerencia;
     }
 
-   
 }
