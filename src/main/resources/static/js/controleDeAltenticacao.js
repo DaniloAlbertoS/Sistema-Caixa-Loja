@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Função para reiniciar o cronômetro de inatividade
     const reiniciarCronometro = () => {
         clearTimeout(timeout); // Limpa o cronômetro anterior
-        timeout = setTimeout(redirecionarPorInatividade, 1 * 60 * 1000); // 10 minutos
+        timeout = setTimeout(redirecionarPorInatividade, 10 * 60 * 1000); // 10 minutos
     };
 
     // Adiciona eventos para detectar atividades do usuário
