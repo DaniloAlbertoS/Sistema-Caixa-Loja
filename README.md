@@ -2,7 +2,10 @@
 Sistema de Gestão de Caixas de Loja. Com cadastro, edições, visualizações e envios de relatórios. 
 
 ## Status do Projeto
-🚧 Em desenvolvimento 🚧
+🚧 Finalizado. 🚧
+
+## Versão 
+✅️ 1.0
 
 ## Tecnologias Utilizadas 🛠️
 - Java
